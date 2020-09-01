@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-configmap
 data:
-  version: "1"
+  version: "2"
