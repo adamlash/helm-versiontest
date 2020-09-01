@@ -3,22 +3,22 @@ entries:
   mychart:
   - apiVersion: v2
     appVersion: 1.17.0
-    created: "2020-09-01T11:50:44.3329021-04:00"
+    created: "2020-09-01T11:52:06.8147264-04:00"
     description: A Helm chart for Kubernetes
     digest: ba241c6eb5be1b4edef131a01515b75f20d05f1bb9b3025c3af041d296eb3b72
     name: mychart
     type: application
     urls:
-    - https://adamlash.github.io/docs/mychart-0.3.0.tgz
+    - https://adamlash.github.io/helm-versiontest/mychart-0.3.0.tgz
     version: 0.3.0
   - apiVersion: v2
     appVersion: 1.17.0
-    created: "2020-09-01T11:50:44.3325394-04:00"
+    created: "2020-09-01T11:52:06.814348-04:00"
     description: A Helm chart for Kubernetes
     digest: 934c959a89cd95239006a6846db4a22de16d7db5f908497cfbfad1cec4f60bd7
     name: mychart
     type: application
     urls:
-    - https://adamlash.github.io/docs/mychart-0.2.0.tgz
+    - https://adamlash.github.io/helm-versiontest/mychart-0.2.0.tgz
     version: 0.2.0
-generated: "2020-09-01T11:50:44.3320578-04:00"
+generated: "2020-09-01T11:52:06.8138452-04:00"
