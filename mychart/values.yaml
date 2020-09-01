@@ -1,0 +1,105 @@
+###############################
+## Nginx Configuration ########
+###############################
+# Configuration for Nginx
+nginx:
+  image: nginx:mainline
+  resources:
+    limits:
+      cpu: 50m
+      memory: 128Mi
+    requests:
+      cpu: 50m
+      memory: 128Mi
+###############################
+## Magento Configuration ######
+###############################
+# Configuration for Magento (PHP) Containers
+php:
+# General Configuration
+  image: nginx:mainline
+  resources:
+  limits:
+    cpu: 250m
+    memory: 1Gi
+  requests:
+    cpu: 250m
+    memory: 1Gi
+# Environment Variables for the PHP Containers
+  env:
+    ADMIN_EMAIL:
+    ADMIN_FIRSTNAME:
+    ADMIN_LASTNAME:
+    ADMIN_URI:
+    ADMIN_USER:
+    ADMIN_PASSWORD:
+    KEY:
+# Database Configurations
+    DB_HOST:
+    DB_NAME:
+    DB_PASS:
+    DB_ROOT_PASS:
+    DB_USER:
+# Magento HTTP/HTTPS Configurations
+    MAGE_MODE:
+    BASE_URL_SECURE:
+    BASE_URL_UNSECURE:
+    USE_HTTPS:
+    HTTPS:
+    CONFIG__DEFAULT__WEB__URL__REDIRECT_TO_BASE:
+    CONFIG__DEFAULT__WEB__SECURE__USE_IN_FRONTEND:
+    CONFIG__DEFAULT__WEB__SECURE__USE_IN_ADMINHTML:
+    CONFIG__DEFAULT__WEB__COOKIE__COOKIE_DOMAIN:
+    CONFIG__DEFAULT__WEB__SECURE__BASE_LINK_URL:
+    CONFIG__DEFAULT__WEB__SECURE__BASE_URL:
+    CONFIG__DEFAULT__WEB__UNSECURE__BASE_LINK_URL:
+    CONFIG__DEFAULT__WEB__UNSECURE__BASE_URL:
+# Cron Configurations
+    CONFIG__DEFAULT__SYSTEM__CRON__INDEX__USE_SEPARATE_PROCESS:
+    CONFIG__DEFAULT__SYSTEM__CRON__DEFAULT__USE_SEPARATE_PROCESS:
+    CONFIG__DEFAULT__SYSTEM__CRON__CONSUMERS__USE_SEPARATE_PROCESS:
+    CONFIG__DEFAULT__SYSTEM__CRON__DDG_AUTOMATION__USE_SEPARATE_PROCESS:
+# Elastic Search Configurations
+    CONFIG__DEFAULT__CATALOG__SEARCH__ELASTICSEARCH6_SERVER_HOSTNAME:
+    CONFIG__DEFAULT__CATALOG__SEARCH__ELASTICSEARCH6_SERVER_PORT:
+    CONFIG__DEFAULT__CATALOG__SEARCH__ENGINE:
+# Redis Configurations
+    REDIS_CACHE_HOST:
+    REDIS_CACHE_PORT:
+    REDIS_CACHE_DB:
+    REDIS_FPC_HOST:
+    REDIS_FPC_PORT:
+    REDIS_FPC_DB:
+    REDIS_SESSION_HOST:
+    REDIS_SESSION_PORT:
+    REDIS_SESSION_DB:
+# Varnish Configurations
+    CONFIG__DEFAULT__SYSTEM__FULL_PAGE_CACHE__CACHING_APPLICATION:
+    CONFIG__DEFAULT__SYSTEM__FULL_PAGE_CACHE__VARNISH__ACCESS_LIST:
+    CONFIG__DEFAULT__SYSTEM__FULL_PAGE_CACHE__VARNISH__BACKEND_HOST:
+    CONFIG__DEFAULT__SYSTEM__FULL_PAGE_CACHE__VARNISH__BACKEND_PORT:
+    CONFIG__DEFAULT__SYSTEM__FULL_PAGE_CACHE__VARNISH__GRACE_PERIOD:
+    CONFIG__DEFAULT__SYSTEM__FULL_PAGE_CACHE__VARNISH__TTL:
+    VARNISH_HOST:
+    VARNISH_PORT:
+
+
+
+
+###############################
+## Persistence Configuration ##
+###############################
+# Configuration for Persistence Values
+# Magento works best wiht 'azurefile-premium' storage classes due to the high IOPS requirement. 
+# ReadWriteMany is required for Static, but may be changed for Media.
+# The Larger the disk the more Provisioned IOPS, please see https://azure.microsoft.com/en-us/pricing/details/storage/files/ for more info
+persistence:
+  static:
+    storageClass: azurefile-premium
+    accessMode: ReadWriteMany
+    size: 200Gi
+  media:
+    storageClass: azurefile-premium
+    accessMode: ReadWriteMany
+    size: 200Gi
+  
